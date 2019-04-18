@@ -8,6 +8,4 @@ class KaptureHome extends StatefulWidget {
 class _KaptureHomeState extends State<KaptureHome> {
   @override
   Widget build(BuildContext context) => Scaffold();
-
-  
 }

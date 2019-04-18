@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'Screens/HomeScreen.dart';
+import 'Screens/LocationScreen.dart';
+import 'Screens/LoginScreen.dart';
 import 'home.dart';
 
 void main() => runApp(Kapture());
@@ -9,6 +12,6 @@ class Kapture extends StatelessWidget {
         title: 'Kapture One',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(),
-        home: KaptureHome(),
+        home: LocationScreen(),
       );
 }
