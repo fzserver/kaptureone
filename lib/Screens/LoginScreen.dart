@@ -13,7 +13,9 @@ class LoginScreen extends StatelessWidget{
             children: <Widget>[
               Container(
                 color: Colors.white,
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height*0.3,
+                child: Image(image: AssetImage("assets/images/logo.png"), width: 20, height: 20,fit: BoxFit.contain,),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),

@@ -40,12 +40,12 @@ class AuthenticationButtonState extends State<AuthenticationButton> {
         onPressed: () {},
         color: _authDetails[type]['color'],
         child:  Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
             width: MediaQuery.of(context).size.width,
             child: Row(
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.1),
+                    margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.05),
                     child: SvgPicture.asset(_authDetails[type]['svg'], width: 30)),
                 Text(
                     (_authDetails[type]['text']),

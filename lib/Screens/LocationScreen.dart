@@ -16,7 +16,7 @@ class LocationScreen extends StatelessWidget{
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 50.0, bottom: 20.0),
-                      child: Icon(Icons.my_location, color: Colors.blue, size: 80.0,),
+                      child: Image(image: AssetImage("assets/images/location_pin.png"), height: 80,)
                     ),
                     Text("What's your Location", style: TextStyle(color: Colors.blue, fontSize: 25.0),)
                   ],
@@ -34,7 +34,7 @@ class LocationScreen extends StatelessWidget{
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(right: 20.0),
-                            child: Icon(Icons.my_location, color: Colors.amber,),
+                            child: Image(image: AssetImage("assets/images/location.png"), height: 30,),
                           ),
                           Text("Use current location", style: TextStyle(color: Colors.white, fontSize: 20.0 ),),
                         ],
