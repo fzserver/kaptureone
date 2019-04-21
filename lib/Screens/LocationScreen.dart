@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LocationScreen extends StatelessWidget{
+class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,20 +11,26 @@ class LocationScreen extends StatelessWidget{
           child: Column(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height*0.3,
+                height: MediaQuery.of(context).size.height * 0.3,
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(top: 50.0, bottom: 20.0),
-                      child: Image(image: AssetImage("assets/images/location_pin.png"), height: 80,)
-                    ),
-                    Text("What's your Location", style: TextStyle(color: Colors.blue, fontSize: 25.0),)
+                        padding: EdgeInsets.only(top: 50.0, bottom: 20.0),
+                        child: Image(
+                          image: AssetImage("assets/images/location_pin.png"),
+                          height: 80,
+                        )),
+                    Text(
+                      "What's your Location",
+                      style: TextStyle(color: Colors.blue, fontSize: 25.0),
+                    )
                   ],
                 ),
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 120.0, horizontal: 30.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 120.0, horizontal: 30.0),
                   width: MediaQuery.of(context).size.width,
                   color: Colors.blue,
                   child: Column(
@@ -34,25 +40,39 @@ class LocationScreen extends StatelessWidget{
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(right: 20.0),
-                            child: Image(image: AssetImage("assets/images/location.png"), height: 30,),
+                            child: Image(
+                              image: AssetImage("assets/images/location.png"),
+                              height: 30,
+                            ),
                           ),
-                          Text("Use current location", style: TextStyle(color: Colors.white, fontSize: 20.0 ),),
+                          Text(
+                            "Use current location",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0),
+                          ),
                         ],
                       ),
                       Padding(
-                        padding:  EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text("or", style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic)),
+                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                        child: Text("or",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic)),
                       ),
                       TextFormField(
                         decoration: InputDecoration(
-                          border: UnderlineInputBorder(borderRadius: BorderRadius.circular(5.0),),
-                          filled: true,
-                          hintText: "Search by location",
-                          hintStyle: TextStyle(color: Colors.grey),
-                          fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.search, size: 30.0,),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
+                            border: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            filled: true,
+                            hintText: "Search by location",
+                            hintStyle: TextStyle(color: Colors.grey),
+                            fillColor: Colors.white,
+                            prefixIcon: Icon(
+                              Icons.search,
+                              size: 30.0,
+                            ),
+                            suffixIcon: Icon(Icons.arrow_drop_down)),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -65,5 +85,4 @@ class LocationScreen extends StatelessWidget{
       ),
     );
   }
-
 }

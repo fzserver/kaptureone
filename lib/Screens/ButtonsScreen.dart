@@ -3,27 +3,35 @@ import '../Screens/LoginScreen.dart';
 import '../Screens/LocationScreen.dart';
 import '../Screens/HomeScreen.dart';
 
-class ButtonsScreen extends StatelessWidget{
+class ButtonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Main Screen"),),
+      appBar: AppBar(
+        title: Text("Main Screen"),
+      ),
       body: Center(
         child: Column(
           children: <Widget>[
-            RaisedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-            },
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
               child: Text("Login Screen"),
             ),
-            RaisedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationScreen()));
-            },
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LocationScreen()));
+              },
               child: Text("Location Screen"),
             ),
-            RaisedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
-            },
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+              },
               child: Text("Home Screen"),
             )
           ],
@@ -31,5 +39,4 @@ class ButtonsScreen extends StatelessWidget{
       ),
     );
   }
-  
 }
