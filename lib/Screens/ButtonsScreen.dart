@@ -34,13 +34,6 @@ class ButtonsScreen extends StatelessWidget {
               },
               child: Text("Home Screen"),
             ),
-            RaisedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MarriageScreen()));
-              },
-              child: Text("Marriage Screen"),
-            )
           ],
         ),
       ),
