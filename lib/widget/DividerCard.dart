@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DividerCard extends StatelessWidget{
+class DividerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,5 +10,4 @@ class DividerCard extends StatelessWidget{
       color: Colors.blue,
     );
   }
-
 }

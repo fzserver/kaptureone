@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*0.3,
+                height: MediaQuery.of(context).size.height * 0.3,
                 child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -103,8 +103,9 @@ class HomeScreen extends StatelessWidget {
                       );
                     })),
             Container(
-              height: MediaQuery.of(context).size.height*0.55,
-              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.05),
+              height: MediaQuery.of(context).size.height * 0.55,
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height * 0.05),
               child: GridView.count(
                   crossAxisCount: 3,
                   childAspectRatio: 1.5,
@@ -124,17 +125,23 @@ class HomeScreen extends StatelessWidget {
                   ].map((Map index) {
                     return new GridTile(
                         child: GestureDetector(
-                          onTap: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => MarriageScreen()));
-                          },
-                          child: Column(
-                            children: <Widget>[
-                              Image(image: AssetImage(index['url']), height: 50, width: 50,),
-                              Text(index['text'])
-                            ],
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MarriageScreen()));
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage(index['url']),
+                            height: 50,
+                            width: 50,
                           ),
-                        ));
+                          Text(index['text'])
+                        ],
+                      ),
+                    ));
                   }).toList()),
             ),
           ],

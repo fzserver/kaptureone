@@ -6,7 +6,6 @@ import '../Screens/MarriageDetailsScreen.dart';
 class MarriageScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
