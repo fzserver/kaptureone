@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../Screens/LoginScreen.dart';
 import '../Screens/LocationScreen.dart';
 import '../Screens/HomeScreen.dart';
-
+import '../Screens/MarriageScreen.dart';
 class ButtonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,6 +33,13 @@ class ButtonsScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => HomeScreen()));
               },
               child: Text("Home Screen"),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MarriageScreen()));
+              },
+              child: Text("Marriage Screen"),
             )
           ],
         ),
