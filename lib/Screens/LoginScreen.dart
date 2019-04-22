@@ -15,11 +15,12 @@ class LoginScreen extends StatelessWidget {
                 color: Colors.white,
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.3,
-                child: Image(
-                  image: AssetImage("assets/images/logo.png"),
-                  width: 20,
-                  height: 20,
-                  fit: BoxFit.contain,
+                child: Center(
+                  child: Image(
+                    image: AssetImage("assets/images/logo.png"),
+                    width: 150,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               Container(
