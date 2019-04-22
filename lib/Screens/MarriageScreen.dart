@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widget/MarriageCard.dart';
 import '../widget/DividerCard.dart';
+import '../Screens/MarriageDetailsScreen.dart';
 
 class MarriageScreen extends StatelessWidget{
   @override
@@ -41,7 +42,12 @@ class MarriageScreen extends StatelessWidget{
       ),
       body: ListView(
         children: <Widget>[
-          MarriageCard(),
+          GestureDetector(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MarriageDetailsScreen()));
+              },
+              child: MarriageCard()),
           DividerCard(),
           MarriageCard(),
           DividerCard(),
