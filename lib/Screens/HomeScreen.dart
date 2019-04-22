@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Screens/MarriageScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -84,7 +85,7 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Container(
                 width: MediaQuery.of(context).size.width,
-                height: 220,
+                height: MediaQuery.of(context).size.height*0.3,
                 child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -101,6 +102,41 @@ class HomeScreen extends StatelessWidget {
                         ),
                       );
                     })),
+            Container(
+              height: MediaQuery.of(context).size.height*0.55,
+              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height*0.05),
+              child: GridView.count(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1.5,
+                  padding: const EdgeInsets.all(10.0),
+                  mainAxisSpacing: 40.0,
+                  crossAxisSpacing: 40.0,
+                  children: <Map>[
+                    {"url": 'assets/images/icon1.png', "text": 'Marriage'},
+                    {"url": 'assets/images/icon2.png', "text": 'Events'},
+                    {"url": 'assets/images/icon3.png', "text": 'Corporate'},
+                    {"url": 'assets/images/icon4.png', "text": 'E-commarce'},
+                    {"url": 'assets/images/icon5.png', "text": 'Portfolio'},
+                    {"url": 'assets/images/icon6.png', "text": 'Product'},
+                    {"url": 'assets/images/icon7.png', "text": 'Food'},
+                    {"url": 'assets/images/icon8.png', "text": 'Landscaps'},
+                    {"url": 'assets/images/icon9.png', "text": 'Abstract'},
+                  ].map((Map index) {
+                    return new GridTile(
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => MarriageScreen()));
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              Image(image: AssetImage(index['url']), height: 50, width: 50,),
+                              Text(index['text'])
+                            ],
+                          ),
+                        ));
+                  }).toList()),
+            ),
           ],
         ),
       ),
