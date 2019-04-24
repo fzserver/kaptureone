@@ -5,7 +5,7 @@ class DealsBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(5.0),
-      width: 110,
+      width: 100,
       height: 80,
       decoration: BoxDecoration(
           border: Border.all(color: Colors.blue),
@@ -35,7 +35,7 @@ class DealsBox extends StatelessWidget {
               ),
               Text(
                 "12",
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colors.blue,fontSize: 12, fontWeight: FontWeight.bold),
               )
             ],
           ),
@@ -46,7 +46,7 @@ class DealsBox extends StatelessWidget {
                 "Completed",
                 style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
               ),
-              Text("20", style: TextStyle(color: Colors.blue))
+              Text("20", style: TextStyle(color: Colors.blue,fontSize: 12, fontWeight: FontWeight.bold))
             ],
           ),
         ],

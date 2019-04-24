@@ -11,22 +11,30 @@ class MarriageCard extends StatelessWidget {
         children: <Widget>[
           Container(
             height: 100,
-            width: 110,
+            width: 100,
             child: Image(image: AssetImage("assets/images/bg.png")),
           ),
-          Text(
-            "Name",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          Flexible(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              child: Text(
+                "Sahibpreet",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
           DealsBox(),
-          Icon(
-            Icons.phone,
-            size: 40,
-            color: Colors.amber,
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            child: Icon(
+              Icons.phone,
+              size: 40,
+              color: Colors.amber,
+            ),
           ),
           Icon(
             Icons.favorite,
-            color: Colors.red,
+            color: Colors.redAccent,
             size: 40,
           )
         ],

@@ -9,7 +9,7 @@ class MarriageScreen extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text("Marriage"),
+        title: Text("Marriage", style: TextStyle(fontSize: 23),),
         centerTitle: true,
         actions: <Widget>[
           Row(
@@ -22,7 +22,7 @@ class MarriageScreen extends StatelessWidget{
                   children: <Widget>[
                     Icon(
                       Icons.location_on,
-                      color: Colors.redAccent,
+                      color: Colors.purple,
                     ),
                     Text(
                       "Location",
