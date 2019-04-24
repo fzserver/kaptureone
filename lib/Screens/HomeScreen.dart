@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Screens/MarriageScreen.dart';
+import '../widget/CustomAppbar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -10,74 +10,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         leading: Image(image: AssetImage("assets/images/logo.png")),
         actions: <Widget>[
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.home,
-                      size: 30,
-                      color: Colors.lightGreen,
-                    ),
-                    Text(
-                      "My orders",
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.location_on,
-                      size: 30,
-                      color: Colors.redAccent,
-                    ),
-                    Text(
-                      "Location",
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.grey,
-                    ),
-                    Text(
-                      "Profile",
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.notifications,
-                      size: 30,
-                      color: Colors.amber,
-                    ),
-                    Text(
-                      "Notifications",
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          )
+          CustomAppbar()
         ],
       ),
       body: Container(
@@ -103,13 +36,12 @@ class HomeScreen extends StatelessWidget {
                       );
                     })),
             Container(
-              height: MediaQuery.of(context).size.height * 0.55,
-              padding: EdgeInsets.symmetric(
+                  height: MediaQuery.of(context).size.height * 0.55,
+                  padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.05),
-              child: GridView.count(
+                  child: GridView.count(
                   crossAxisCount: 3,
                   childAspectRatio: 1.5,
-                  padding: const EdgeInsets.all(10.0),
                   mainAxisSpacing: 40.0,
                   crossAxisSpacing: 40.0,
                   children: <Map>[
@@ -123,25 +55,16 @@ class HomeScreen extends StatelessWidget {
                     {"url": 'assets/images/icon8.png', "text": 'Landscaps'},
                     {"url": 'assets/images/icon9.png', "text": 'Abstract'},
                   ].map((Map index) {
-                    return new GridTile(
-                        child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MarriageScreen()));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image(
-                            image: AssetImage(index['url']),
-                            height: 50,
-                            width: 50,
-                          ),
-                          Text(index['text'])
-                        ],
-                      ),
-                    ));
+                    return Column(
+                      children: <Widget>[
+                        Image(
+                          image: AssetImage(index['url']),
+                          height: 50,
+                          width: 50,
+                        ),
+                        Text(index['text'])
+                      ],
+                    );
                   }).toList()),
             ),
           ],
