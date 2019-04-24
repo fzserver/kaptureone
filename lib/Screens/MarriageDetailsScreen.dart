@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/DealsBox.dart';
+import '../widget/ProfileCard.dart';
 
 class MarriageDetailsScreen extends StatelessWidget{
   @override
@@ -8,7 +8,7 @@ class MarriageDetailsScreen extends StatelessWidget{
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text("Sahibpreet singh"),
+          title: Text("Sahibpreet singh",style: TextStyle(fontSize: 23),),
           centerTitle: true,
           actions: <Widget>[
             Row(
@@ -21,7 +21,7 @@ class MarriageDetailsScreen extends StatelessWidget{
                     children: <Widget>[
                       Icon(
                         Icons.location_on,
-                        color: Colors.redAccent,
+                        color: Colors.purple,
                       ),
                       Text(
                         "Location",
@@ -38,84 +38,58 @@ class MarriageDetailsScreen extends StatelessWidget{
             )
           ],
         ),
-        body: Container(
-          padding: EdgeInsets.all(10.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView(
+          child: Column(
             children: <Widget>[
+              ProfileCard(),
               Container(
-                width: MediaQuery.of(context).size.width*0.2,
-                child: CircleAvatar(
-                  child: Icon(Icons.person),
-                  radius: 40,
-                ),
-              ),
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: Text("Portfolio", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),)),
               Container(
-                width: MediaQuery.of(context).size.width*0.45,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding:  EdgeInsets.only(bottom: 10.0),
-                      child: Text("Sahibpreet singh", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                    ),
-                    Padding(
-                      padding:  EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text("Wedding", style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),),
-                          Text("Events", style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),),
-                          Text("Portfolio", style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),)
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Padding(
-                                padding:  EdgeInsets.only(bottom: 10.0),
-                                child: Icon(Icons.favorite_border, size: 40,),
-                              ),
-                              Text('Add to favorite', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.blue),)
-                            ],
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Padding(
-                                padding:  EdgeInsets.only(bottom: 10.0),
-                                child: Icon(Icons.share, size: 40,),
-                              ),
-                              Text('Share profile', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.blue),)
-                            ],
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height * 0.02),
+                    child: GridView.count(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 5,
+                      children: List.generate(12, (index) {
+                        return Center(
+                          child: Image(
+                            image: AssetImage('assets/images/bg.png'),
                           )
-                        ],
-                      ),
+                        );
+                      }),
                     )
-                  ],
-                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.0),
+                child: Text("Show all", style: TextStyle(color: Colors.blue),),
               ),
               Container(
-                width: MediaQuery.of(context).size.width*0.30,
-                child: Column(
+                color: Colors.blue,
+                padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Padding(
-                      padding:  EdgeInsets.only(bottom: 20.0),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.star, color: Colors.amber,),
-                          Icon(Icons.star, color: Colors.amber,),
-                          Icon(Icons.star, color: Colors.amber,),
-                          Icon(Icons.star_border),
-                          Icon(Icons.star_border),
-                        ],
-                      ),
+                    Column(
+                      children: <Widget>[
+                        Icon(
+                          Icons.phone,
+                          size: 40,
+                          color: Colors.amber,
+                        ),
+                        Text("Call", style: TextStyle(color: Colors.white),)
+                      ],
                     ),
-                    DealsBox()
+                    Column(
+                      children: <Widget>[
+                        Image(
+                          image: AssetImage("assets/images/deals.png"),
+                          height: 40,
+                        ),
+                        Text("Make a deal", style: TextStyle(color: Colors.white),)
+                      ],
+                    )
                   ],
                 ),
               )
