@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../Screens/SignupScreen.dart';
+import '../Screens/HomeScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -63,6 +64,15 @@ class LoginScreen extends StatelessWidget {
                   obscureText: true,
                 ),
               ),
+                RaisedButton(onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
+                  color: Color(0xff03a9f4),
+                  elevation: 0,
+                  padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 6.0),
+                  child: Text("Submit", style: TextStyle(color: Colors.white, fontSize: 15.0,fontFamily: 'Pacifico'),),
+                ),
               Padding(
                 padding: EdgeInsets.only(bottom: 10.0),
                 child: Text("or",
