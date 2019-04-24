@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Screens/LoginScreen.dart';
+import '../Screens/OtpScreen.dart';
+
 
 class SignupScreen extends StatelessWidget {
   @override
@@ -27,36 +29,57 @@ class SignupScreen extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(15.0),
                 child: Image(
-                  image: AssetImage("assets/images/code_vector.png"),
+                  image: AssetImage("assets/images/signup_vector.png"),
                   height: 250,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-                child: Text(
-                  "\"An e-mail is shared with you with a code\"",
-                  style: TextStyle(
-                      fontSize: 20.0,color: Color(0xff03a9f4),fontFamily: 'Pacifico'),
-                ),
-              ),
               Text(
-                "Enter the code in your e-mail",
+                "Create a new account",
                 style: TextStyle(
                     fontSize: 20.0,fontFamily: 'Pacifico'),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
                 child: TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
-                    hintText: "Enter the code",
+                    hintText: "Enter email or phone number",
                     contentPadding: EdgeInsets.all(8),
                     hintStyle: TextStyle(
-                      color: Colors.grey,fontFamily: 'Pacifico'),
+                        color: Colors.grey,fontFamily: 'Pacifico'),
                   ),
                 ),
               ),
-              RaisedButton(onPressed: (){},
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                    hintText: "Enter password",
+                    contentPadding: EdgeInsets.all(8),
+                    hintStyle: TextStyle(
+                        color: Colors.grey,fontFamily: 'Pacifico'),
+                  ),
+                  obscureText: true,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                    hintText: "Confirm password",
+                    contentPadding: EdgeInsets.all(8),
+                    hintStyle: TextStyle(
+                        color: Colors.grey,fontFamily: 'Pacifico'),
+                  ),
+                  obscureText: true,
+                ),
+              ),
+              RaisedButton(onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OtpScreen()));
+              },
                 color: Color(0xff03a9f4),
                 elevation: 0,
                 padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 6.0),
@@ -65,21 +88,21 @@ class SignupScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: InkWell(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
-                  },
-                  child: RichText(
-                          text: TextSpan(
-                          text: 'Already have an account ?',
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginScreen()));
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Already have an account ?',
                         style: TextStyle(
-                        decoration: TextDecoration.underline, fontSize: 20.0, color: Colors.black,fontFamily: 'Pacifico'),
-                      children: <TextSpan>[
-                        TextSpan(text: 'Sing in', style: TextStyle(
-                        decoration: TextDecoration.underline, fontSize: 20.0, color: Color(0xff03a9f4),fontFamily: 'Pacifico'),),
-                      ],
-                    ),
-                  )
+                            decoration: TextDecoration.underline, fontSize: 20.0, color: Colors.black,fontFamily: 'Pacifico'),
+                        children: <TextSpan>[
+                          TextSpan(text: 'Sing in', style: TextStyle(
+                              decoration: TextDecoration.underline, fontSize: 20.0, color: Color(0xff03a9f4),fontFamily: 'Pacifico'),),
+                        ],
+                      ),
+                    )
                 ),
               ),
             ],
