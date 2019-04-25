@@ -80,8 +80,8 @@ class _LoginState extends State<Login> {
                   color: Colors.white, fontSize: 15.0, fontFamily: 'Pacifico'),
             )),
         Text("or", style: TextStyle(fontSize: 20.0, fontFamily: 'Pacifico')),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: _loginbutton(),
         ),
