@@ -3,6 +3,7 @@ import '../Screens/LoginScreen.dart';
 import '../Screens/LocationScreen.dart';
 import '../Screens/HomeScreen.dart';
 import '../Screens/MarriageScreen.dart';
+import 'Login.dart';
 
 class ButtonsScreen extends StatelessWidget {
   @override
@@ -42,6 +43,13 @@ class ButtonsScreen extends StatelessWidget {
               },
               child: Text("Marriage Screen"),
             ),
+            MaterialButton(
+              onPressed: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login())),
+              child: Text('Login'),
+              color: Colors.blue,
+              textColor: Colors.white,
+            )
           ],
         ),
       ),
