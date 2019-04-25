@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'SignupScreen.dart';
+import 'Signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -11,15 +11,14 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: _loginitems(),
-              ),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: _loginitems(),
             ),
           ),
         ),
@@ -34,6 +33,7 @@ class _LoginState extends State<Login> {
         Text(
           "\"The best Photographers in town\"\n–now just a fingertip away–",
           style: TextStyle(fontSize: 20, fontFamily: 'Pacifico'),
+          textAlign: TextAlign.center,
         ),
         Image(
           image: AssetImage("assets/images/login_vector.png"),
@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
         InkWell(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SignupScreen()));
+                MaterialPageRoute(builder: (context) => Signup()));
           },
           child: Text(
             "Create an account",
