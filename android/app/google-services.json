@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "1076679705817",
-    "firebase_url": "https://kaptureone-6b2d2.firebaseio.com",
-    "project_id": "kaptureone-6b2d2",
-    "storage_bucket": "kaptureone-6b2d2.appspot.com"
+    "project_number": "174410583131",
+    "firebase_url": "https://keptureone-2563f.firebaseio.com",
+    "project_id": "keptureone-2563f",
+    "storage_bucket": "keptureone-2563f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1076679705817:android:2b6a2c700ca3dd34",
+        "mobilesdk_app_id": "1:174410583131:android:2b6a2c700ca3dd34",
         "android_client_info": {
           "package_name": "com.ko.kaptureone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1076679705817-okkv0uhj0fuii7q82ep1amk3ar9tba7g.apps.googleusercontent.com",
+          "client_id": "174410583131-qg1tlmmamhd7r6gq3690vt1fok7q8blj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBFjBStWWoHQneVsIj5vuYLc6_7vOC_VR0"
+          "current_key": "AIzaSyDg6zO6LdRjX-SfgVKbfQpAlRUb8IgJ_q4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1076679705817-okkv0uhj0fuii7q82ep1amk3ar9tba7g.apps.googleusercontent.com",
+              "client_id": "174410583131-qg1tlmmamhd7r6gq3690vt1fok7q8blj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
