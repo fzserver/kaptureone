@@ -94,8 +94,8 @@ class _SignupState extends State<Signup> {
         )),
     InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => Login()));
+        Route route = MaterialPageRoute(builder: (context) => Login());
+        Navigator.pushReplacement(context, route);
       },
       child: RichText(
         text: TextSpan(
