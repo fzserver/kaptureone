@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Screens/LoginScreen.dart';
 import '../Screens/LocationScreen.dart';
 import '../Screens/HomeScreen.dart';
 import '../Screens/MarriageScreen.dart';
@@ -15,13 +14,6 @@ class ButtonsScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
-            RaisedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
-              child: Text("Login Screen"),
-            ),
             RaisedButton(
               onPressed: () {
                 Navigator.push(context,
