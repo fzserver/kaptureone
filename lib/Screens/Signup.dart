@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'Login.dart';
-import 'Otp.dart';
 
 class Signup extends StatefulWidget {
   @override
   _SignupState createState() => _SignupState();
+}
+
+final formKey = GlobalKey<FormState>();
+String _email;
+String _password;
+String _confirmpassword;
+
+bool validateAndSave(){
+  final form = formKey.currentState;
+  if (form.validate()){
+    form.save();
+    return true;
+  }
+  return false;
+}
+void validateAndSubmit() async{
+  if(validateAndSave()){
+    try {
+      FirebaseUser user = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: _email, password: _password);
+      print("Register ${user.uid}");
+    }
+    catch (e){
+      print("error $e");
+    }
+  }
 }
 
 class _SignupState extends State<Signup> {
@@ -44,54 +70,67 @@ class _SignupState extends State<Signup> {
       "Create a new account",
       style: TextStyle(fontSize: 20.0, fontFamily: 'Pacifico'),
     ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-      child: TextFormField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue)),
-          hintText: "Enter E-mail or phone number",
-          contentPadding: EdgeInsets.all(8),
-          hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
-        ),
+    Form(
+      key: formKey,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: TextFormField(
+              validator: (value)=> value.isEmpty ? "Email can't be empty" : null,
+              onSaved: (value)=> _email = value,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue)),
+                hintText: "Enter E-mail or phone number",
+                contentPadding: EdgeInsets.all(8),
+                hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: TextFormField(
+              validator: (value)=> value.isEmpty ? "Password can't be empty" : null,
+              onSaved: (value)=> _password = value,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue)),
+                hintText: "Enter password",
+                contentPadding: EdgeInsets.all(8),
+                hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
+              ),
+              obscureText: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: TextFormField(
+              validator: (value)=> value.isEmpty ? "Password can't be empty" : null,
+              onSaved: (value)=> _confirmpassword = value,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue)),
+                hintText: "Confirm password",
+                contentPadding: EdgeInsets.all(8),
+                hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
+              ),
+              obscureText: true,
+            ),
+          ),
+          MaterialButton(
+              onPressed: validateAndSubmit,
+              color: Color(0xff03a9f4),
+              elevation: 0,
+              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
+              child: Text(
+                "Submit",
+                style: TextStyle(
+                    color: Colors.white, fontSize: 15.0, fontFamily: 'Pacifico'),
+              )),
+        ],
       ),
     ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-      child: TextFormField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue)),
-          hintText: "Enter password",
-          contentPadding: EdgeInsets.all(8),
-          hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
-        ),
-      ),
-    ),
-    Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-      child: TextFormField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue)),
-          hintText: "Confirm password",
-          contentPadding: EdgeInsets.all(8),
-          hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
-        ),
-        obscureText: true,
-      ),
-    ),
-    MaterialButton(
-        onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => Otp())),
-        color: Color(0xff03a9f4),
-        elevation: 0,
-        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
-        child: Text(
-          "Submit",
-          style: TextStyle(
-              color: Colors.white, fontSize: 15.0, fontFamily: 'Pacifico'),
-        )),
     InkWell(
       onTap: () {
         Route route = MaterialPageRoute(builder: (context) => Login());

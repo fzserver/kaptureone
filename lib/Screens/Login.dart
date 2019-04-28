@@ -36,10 +36,6 @@ void validateAndSubmit() async{
   }
 }
 
-void moveToRegister(){
-
-}
-
   @override
   Widget build(BuildContext context) => Scaffold(
         body: SingleChildScrollView(
