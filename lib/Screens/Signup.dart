@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'Login.dart';
+import '../widget/auth.dart';
+
 
 class Signup extends StatefulWidget {
+  Signup ({this.auth});
+  final BaseAuth auth;
   @override
   _SignupState createState() => _SignupState();
 }
+
+
+class _SignupState extends State<Signup> {
 
 final formKey = GlobalKey<FormState>();
 String _email;
@@ -24,9 +30,8 @@ bool validateAndSave(){
 void validateAndSubmit() async{
   if(validateAndSave()){
     try {
-      FirebaseUser user = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: _email, password: _password);
-      print("Register ${user.uid}");
+      String userId = await widget.auth.createUserWithEmailAndPassword(_email,_password);
+      print("Register ${userId}");
     }
     catch (e){
       print("error $e");
@@ -34,7 +39,6 @@ void validateAndSubmit() async{
   }
 }
 
-class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) => Scaffold(
     body: SingleChildScrollView(

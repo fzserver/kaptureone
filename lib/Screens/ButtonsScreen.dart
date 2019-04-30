@@ -3,6 +3,7 @@ import '../Screens/LocationScreen.dart';
 import '../Screens/HomeScreen.dart';
 import '../Screens/MarriageScreen.dart';
 import 'Login.dart';
+import '../widget/auth.dart';
 
 class ButtonsScreen extends StatelessWidget {
   @override
@@ -37,7 +38,7 @@ class ButtonsScreen extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Login())),
+                  context, MaterialPageRoute(builder: (context) => Login(auth: Auth(),))),
               child: Text('Login'),
               color: Colors.blue,
               textColor: Colors.white,

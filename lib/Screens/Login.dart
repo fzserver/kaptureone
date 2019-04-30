@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'Signup.dart';
+import '../widget/auth.dart';
+
 
 class Login extends StatefulWidget {
+  Login({this.auth});
+  final BaseAuth auth;
   @override
   _LoginState createState() => _LoginState();
 }
@@ -26,9 +29,8 @@ class _LoginState extends State<Login> {
 void validateAndSubmit() async{
   if(validateAndSave()){
     try {
-      FirebaseUser user = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email, password: _password);
-      print("Signed in ${user.uid}");
+      String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
+      print("Signed in ${userId}");
     }
     catch (e){
       print("error $e");
