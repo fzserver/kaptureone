@@ -17,7 +17,6 @@ class _SignupState extends State<Signup> {
 final formKey = GlobalKey<FormState>();
 String _email;
 String _password;
-String _confirmpassword;
 
 bool validateAndSave(){
   final form = formKey.currentState;
@@ -111,7 +110,7 @@ void validateAndSubmit() async{
             padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
             child: TextFormField(
               validator: (value)=> value.isEmpty ? "Password can't be empty" : null,
-              onSaved: (value)=> _confirmpassword = value,
+              onSaved: (value)=> _password = value,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue)),

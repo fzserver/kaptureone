@@ -127,7 +127,7 @@ void validateAndSubmit() async{
         ),
         InkWell(
           onTap: () {
-            Route route = MaterialPageRoute(builder: (context) => Signup());
+            Route route = MaterialPageRoute(builder: (context) => Signup(auth: Auth(),));
             Navigator.pushReplacement(context, route);
           },
           child: Text(
