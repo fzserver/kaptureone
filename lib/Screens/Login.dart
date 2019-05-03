@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'HomeScreen.dart';
 import 'Signup.dart';
 import '../widget/auth.dart';
 
@@ -28,9 +29,9 @@ class _LoginState extends State<Login> {
   void validateAndSubmit() async {
     if (validateAndSave()) {
       try {
-        String userId =
-            await widget.auth.signInWithEmailAndPassword(_email, _password);
-        // print("Signed in ${userId}");
+        await widget.auth.signInWithEmailAndPassword(_email, _password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } catch (e) {
         // print("error $e");
       }
