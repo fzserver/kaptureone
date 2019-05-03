@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'HomeScreen.dart';
 import 'Signup.dart';
 import '../widget/auth.dart';
 
 class Login extends StatefulWidget {
-  Login({this.auth});
+  Login({this.auth, this.onSignedIn});
   final BaseAuth auth;
+  final VoidCallback onSignedIn;
   @override
   _LoginState createState() => _LoginState();
 }
@@ -23,20 +23,20 @@ class _LoginState extends State<Login> {
       form.save();
       return true;
     }
-    return false;
-  }
-
-  void validateAndSubmit() async {
-    if (validateAndSave()) {
-      try {
-        await widget.auth.signInWithEmailAndPassword(_email, _password);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      } catch (e) {
-        // print("error $e");
-      }
+      return false;
+}
+void validateAndSubmit() async {
+  if (validateAndSave()) {
+    try {
+      String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
+      print("Signed in ${userId}");
+        widget.onSignedIn();
+    }
+    catch (e) {
+      print("error $e");
     }
   }
+}
 
   @override
   Widget build(BuildContext context) => Scaffold(

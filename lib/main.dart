@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kaptureone/Screens/ButtonsScreen.dart';
+import './Screens/Rootpage.dart';
+import './widget/auth.dart';
+
 
 void main() => runApp(Kapture());
 
@@ -9,6 +11,6 @@ class Kapture extends StatelessWidget {
         title: 'Kapture One',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(),
-        home: ButtonsScreen(),
+        home: RootPage(auth: Auth(),),
       );
 }

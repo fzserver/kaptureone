@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
 import '../widget/CustomAppbar.dart';
+import '../widget/auth.dart';
+
 
 class HomeScreen extends StatelessWidget {
+  HomeScreen({this.auth, this.onSingedOut});
+  final BaseAuth auth;
+  final VoidCallback onSingedOut;
+
+  void _signOut() async{
+    try{
+      await auth.signOut();
+      onSingedOut();
+    }
+    catch(e){
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +26,8 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         leading: Image(image: AssetImage("assets/images/logo.png")),
         actions: <Widget>[
-          CustomAppbar()
+          CustomAppbar(),
+          FlatButton(onPressed: _signOut, child: Text("Logout"))
         ],
       ),
       body: Container(
