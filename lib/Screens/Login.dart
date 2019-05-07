@@ -39,7 +39,7 @@ class _LoginState extends State<Login> {
       try {
         String userId =
             await widget.auth.signInWithEmailAndPassword(_email, _password);
-        print("Signed in ${userId}");
+        print("Signed in $userId");
         widget.onSignedIn();
       } catch (e) {
         print("error $e");

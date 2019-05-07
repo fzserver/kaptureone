@@ -27,8 +27,8 @@ class _SignupState extends State<Signup> {
   void validateAndSubmit() async {
     if (validateAndSave()) {
       try {
-        String userId =
-            await widget.auth.createUserWithEmailAndPassword(_email, _password);
+        // String userId =
+        await widget.auth.createUserWithEmailAndPassword(_email, _password);
         // print("Register ${userId}");
       } catch (e) {
         // print("error $e");

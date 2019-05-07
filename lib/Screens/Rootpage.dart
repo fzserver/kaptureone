@@ -18,19 +18,21 @@ class RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
-     widget.auth.currentUser().then((userId){
-        setState(() {
-          _authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
-        });
-     });
+    widget.auth.currentUser().then((userId) {
+      setState(() {
+        _authStatus =
+            userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+      });
+    });
   }
 
-  void _signedIn(){
+  void _signedIn() {
     setState(() {
       _authStatus = AuthStatus.signedIn;
     });
   }
-  void _signedOut(){
+
+  void _signedOut() {
     setState(() {
       _authStatus = AuthStatus.notSignedIn;
     });
@@ -40,9 +42,20 @@ class RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     switch (_authStatus) {
       case AuthStatus.notSignedIn:
-        return Login(auth: widget.auth, onSignedIn: _signedIn,);
+        return Login(
+          auth: widget.auth,
+          onSignedIn: _signedIn,
+        );
       case AuthStatus.signedIn:
-        return HomeScreen(auth: widget.auth, onSingedOut: _signedOut,);
+        return HomeScreen(
+          auth: widget.auth,
+          onSingedOut: _signedOut,
+        );
+      default:
+        return Login(
+          auth: widget.auth,
+          onSignedIn: _signedIn,
+        );
     }
   }
 }

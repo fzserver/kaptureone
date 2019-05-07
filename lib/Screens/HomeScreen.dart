@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:kaptureone/Screens/MarriageScreen.dart';
 import '../widget/CustomAppbar.dart';
 import '../widget/auth.dart';
-
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({this.auth, this.onSingedOut});
   final BaseAuth auth;
   final VoidCallback onSingedOut;
 
-  void _signOut() async{
-    try{
+  void _signOut() async {
+    try {
       await auth.signOut();
       onSingedOut();
-    }
-    catch(e){
+    } catch (e) {
       print(e);
     }
   }
@@ -52,10 +51,10 @@ class HomeScreen extends StatelessWidget {
                       );
                     })),
             Container(
-                  height: MediaQuery.of(context).size.height * 0.55,
-                  padding: EdgeInsets.symmetric(
+              height: MediaQuery.of(context).size.height * 0.55,
+              padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.05),
-                  child: GridView.count(
+              child: GridView.count(
                   crossAxisCount: 3,
                   childAspectRatio: 1.0,
                   mainAxisSpacing: 10.0,
@@ -70,18 +69,20 @@ class HomeScreen extends StatelessWidget {
                     {"url": 'assets/images/icon7.png', "text": 'Food'},
                     {"url": 'assets/images/icon8.png', "text": 'Landscaps'},
                     {"url": 'assets/images/icon9.png', "text": 'Abstract'},
-                  ].map((Map index) {
-                    return Column(
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage(index['url']),
-                          height: 50,
-                          width: 50,
-                        ),
-                        Text(index['text'])
-                      ],
-                    );
-                  }).toList()),
+                  ]
+                      .map((Map index) => InkWell(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MarriageScreen())),
+                        child:Column(
+                            children: <Widget>[
+                              Image(
+                                image: AssetImage(index['url']),
+                                height: 50,
+                                width: 50,
+                              ),
+                              Text(index['text'])
+                            ],
+                          )))
+                      .toList()),
             ),
           ],
         ),
