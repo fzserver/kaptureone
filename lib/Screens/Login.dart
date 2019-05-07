@@ -16,6 +16,14 @@ class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
   String _email;
   String _password;
+  String _passval = "Password";
+  bool _isHidden = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
 
   bool validateAndSave() {
     final form = formKey.currentState;
@@ -23,20 +31,21 @@ class _LoginState extends State<Login> {
       form.save();
       return true;
     }
-      return false;
-}
-void validateAndSubmit() async {
-  if (validateAndSave()) {
-    try {
-      String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
-      print("Signed in ${userId}");
+    return false;
+  }
+
+  void validateAndSubmit() async {
+    if (validateAndSave()) {
+      try {
+        String userId =
+            await widget.auth.signInWithEmailAndPassword(_email, _password);
+        print("Signed in ${userId}");
         widget.onSignedIn();
-    }
-    catch (e) {
-      print("error $e");
+      } catch (e) {
+        print("error $e");
+      }
     }
   }
-}
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -103,12 +112,20 @@ void validateAndSubmit() async {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue)),
-                      hintText: "Enter password",
+                      hintText: _passval,
                       contentPadding: EdgeInsets.all(8),
                       hintStyle:
                           TextStyle(color: Colors.grey, fontFamily: 'Pacifico'),
+                      suffixIcon: _passval == "Password"
+                          ? IconButton(
+                              onPressed: _toggleVisibility,
+                              icon: _isHidden
+                                  ? Icon(Icons.visibility_off)
+                                  : Icon(Icons.visibility),
+                            )
+                          : null,
                     ),
-                    obscureText: true,
+                    obscureText: _passval == "Password" ? _isHidden : false,
                   ),
                 ),
                 RaisedButton(
