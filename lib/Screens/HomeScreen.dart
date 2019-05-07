@@ -23,7 +23,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
         leading: Image(image: AssetImage("assets/images/logo.png")),
         actions: <Widget>[
           CustomAppbar(),
@@ -58,8 +57,8 @@ class HomeScreen extends StatelessWidget {
                   vertical: MediaQuery.of(context).size.height * 0.05),
                   child: GridView.count(
                   crossAxisCount: 3,
-                  childAspectRatio: 1.5,
-                  mainAxisSpacing: 40.0,
+                  childAspectRatio: 1.0,
+                  mainAxisSpacing: 10.0,
                   crossAxisSpacing: 40.0,
                   children: <Map>[
                     {"url": 'assets/images/icon1.png', "text": 'Marriage'},
