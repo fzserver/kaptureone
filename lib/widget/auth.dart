@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 
 abstract class BaseAuth {
@@ -6,9 +7,11 @@ abstract class BaseAuth {
   Future<String> createUserWithEmailAndPassword(String email, String password);
   Future<String> currentUser();
   Future<void> signOut();
+  Future<String> signInWithCredential(String accessToken, String  idToken);
 }
 
 class Auth implements BaseAuth {
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
 
   Future<String> createUserWithEmailAndPassword(String email, String password) async{
     FirebaseUser user = await FirebaseAuth.instance
@@ -28,6 +31,12 @@ class Auth implements BaseAuth {
 
   Future<void> signOut() async{
       return FirebaseAuth.instance.signOut();
+  }
+
+  Future<String> signInWithCredential(String accessToken, String  idToken) async{
+
+    FirebaseUser user = await FirebaseAuth.instance.signInWithCredential(GoogleAuthProvider.getCredential(accessToken: accessToken, idToken: idToken));
+    return user.uid;
   }
 
 }

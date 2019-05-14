@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 import 'Signup.dart';
 import '../widget/auth.dart';
 
@@ -11,8 +11,11 @@ class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
+final GoogleSignIn googleSignIn = new GoogleSignIn();
+
 
 class _LoginState extends State<Login> {
+
   final formKey = GlobalKey<FormState>();
   String _email;
   String _password;
@@ -32,6 +35,19 @@ class _LoginState extends State<Login> {
       return true;
     }
     return false;
+  }
+
+   validateGoogleSignIn() async{
+    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
+    try {
+      String userId =
+          await widget.auth.signInWithCredential(gSA.accessToken, gSA.idToken);
+      print("User Name: ${userId}");
+      widget.onSignedIn();
+    } catch (e) {
+      print("error $e");
+    }
   }
 
   void validateAndSubmit() async {
@@ -193,7 +209,7 @@ class _LoginState extends State<Login> {
             ),
           ),
           MaterialButton(
-            onPressed: () => {},
+            onPressed: () => validateGoogleSignIn(),
             color: Color(0xff03a9f4),
             elevation: 0,
             textColor: Colors.white,
