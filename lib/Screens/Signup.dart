@@ -24,7 +24,7 @@ class _SignupState extends State<Signup> {
     return false;
   }
 
-  void validateAndSubmit() async {
+  void _validateAndSubmit() async {
     if (validateAndSave()) {
       try {
         // String userId =
@@ -127,7 +127,7 @@ class _SignupState extends State<Signup> {
                 ),
               ),
               MaterialButton(
-                  onPressed: validateAndSubmit,
+                  onPressed: _validateAndSubmit,
                   color: Color(0xff03a9f4),
                   elevation: 0,
                   padding:

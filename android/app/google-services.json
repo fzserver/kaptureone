@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "174410583131-n66labjbg1mm841lioecfdl2dal2tegq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ko.kaptureone",
+            "certificate_hash": "52b38d9e3e443880a6f1bca810b445fcefc63fef"
+          }
+        },
+        {
           "client_id": "174410583131-qg1tlmmamhd7r6gq3690vt1fok7q8blj.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "174410583131-qg1tlmmamhd7r6gq3690vt1fok7q8blj.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "174410583131-eu5cfi0o0vp4vgtglreo2qm7ser2hf7g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ko.kaptureone"
+              }
             }
           ]
         }

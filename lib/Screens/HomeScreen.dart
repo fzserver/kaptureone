@@ -22,7 +22,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Image(image: AssetImage("assets/images/logo.png")),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 2.0),
+          child: Image(image: AssetImage("assets/images/logo.png")),
+        ),
         actions: <Widget>[
           CustomAppbar(),
           FlatButton(onPressed: _signOut, child: Text("Logout"))
@@ -46,7 +49,8 @@ class HomeScreen extends StatelessWidget {
                           child: InkWell(
                               onTap: () {},
                               child: Image(
-                                  image: AssetImage('assets/images/bg.png'))),
+                                  image: NetworkImage(
+                                      'https://images.pexels.com/photos/256737/pexels-photo-256737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'))),
                         ),
                       );
                     })),
@@ -71,8 +75,11 @@ class HomeScreen extends StatelessWidget {
                     {"url": 'assets/images/icon9.png', "text": 'Abstract'},
                   ]
                       .map((Map index) => InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MarriageScreen())),
-                        child:Column(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MarriageScreen())),
+                          child: Column(
                             children: <Widget>[
                               Image(
                                 image: AssetImage(index['url']),

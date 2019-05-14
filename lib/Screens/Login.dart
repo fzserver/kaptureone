@@ -12,9 +12,7 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-
 class _LoginState extends State<Login> {
-
   final formKey = GlobalKey<FormState>();
   String _email;
   String _password;
@@ -36,11 +34,11 @@ class _LoginState extends State<Login> {
     return false;
   }
 
-   validateGoogleSignIn() async{
+  validateGoogleSignIn() async {
     GoogleSignInAccount googleSignInAccount = await GoogleSignIn().signIn();
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
     try {
-          await widget.auth.signInWithCredential(gSA.accessToken, gSA.idToken);
+      await widget.auth.signInWithCredential(gSA.accessToken, gSA.idToken);
       widget.onSignedIn();
     } catch (e) {
       print("error $e");
@@ -50,7 +48,7 @@ class _LoginState extends State<Login> {
   void validateAndSubmit() async {
     if (validateAndSave()) {
       try {
-            await widget.auth.signInWithEmailAndPassword(_email, _password);
+        await widget.auth.signInWithEmailAndPassword(_email, _password);
         widget.onSignedIn();
       } catch (e) {
         print("error $e");
@@ -183,26 +181,26 @@ class _LoginState extends State<Login> {
   List<Widget> _loginbutton() => <Widget>[
         SafeArea(
             child: Column(children: <Widget>[
-          MaterialButton(
-            onPressed: () => {},
-            color: Color(0xff8190dd),
-            elevation: 0,
-            textColor: Colors.white,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(right: 4.0),
-                  child: SvgPicture.asset("assets/images/facebook.svg",
-                      width: 20.0),
-                ),
-                Text(
-                  "Continue with Facebook",
-                  style: TextStyle(color: Colors.white, fontSize: 12),
-                ),
-              ],
-            ),
-          ),
+          // MaterialButton(
+          //   onPressed: () => {},
+          //   color: Color(0xff8190dd),
+          //   elevation: 0,
+          //   textColor: Colors.white,
+          //   child: Row(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: <Widget>[
+          //       Padding(
+          //         padding: const EdgeInsets.only(right: 4.0),
+          //         child: SvgPicture.asset("assets/images/facebook.svg",
+          //             width: 20.0),
+          //       ),
+          //       Text(
+          //         "Continue with Facebook",
+          //         style: TextStyle(color: Colors.white, fontSize: 12),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           MaterialButton(
             onPressed: () => validateGoogleSignIn(),
             color: Color(0xff03a9f4),
