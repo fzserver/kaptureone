@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+
 import 'Signup.dart';
 import '../widget/auth.dart';
 
@@ -41,6 +43,18 @@ class _LoginState extends State<Login> {
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
     try {
           await widget.auth.signInWithCredential(gSA.accessToken, gSA.idToken);
+      widget.onSignedIn();
+    } catch (e) {
+      print("error $e");
+    }
+  }
+
+  validateFacebookSignIn() async{
+    var result = await FacebookLogin().loginWithPublishPermissions(['email']);
+    try {
+      if(result.status== FacebookLoginStatus.loggedIn) {
+        await widget.auth.signInWithFacebook(result.accessToken.token);
+      }
       widget.onSignedIn();
     } catch (e) {
       print("error $e");
@@ -184,7 +198,7 @@ class _LoginState extends State<Login> {
         SafeArea(
             child: Column(children: <Widget>[
           MaterialButton(
-            onPressed: () => {},
+            onPressed: () => validateFacebookSignIn(),
             color: Color(0xff8190dd),
             elevation: 0,
             textColor: Colors.white,

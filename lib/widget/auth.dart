@@ -8,6 +8,7 @@ abstract class BaseAuth {
   Future<String> currentUser();
   Future<void> signOut();
   Future<String> signInWithCredential(String accessToken, String  idToken);
+  Future<String> signInWithFacebook(String accessToken);
 }
 
 class Auth implements BaseAuth {
@@ -37,6 +38,11 @@ class Auth implements BaseAuth {
 
     FirebaseUser user = await FirebaseAuth.instance.signInWithCredential(GoogleAuthProvider.getCredential(accessToken: accessToken, idToken: idToken));
     return user.uid;
+  }
+
+  Future<String> signInWithFacebook(String accessToken) async{
+    FirebaseUser user = await FirebaseAuth.instance.signInWithCredential(FacebookAuthProvider.getCredential(accessToken: accessToken));
+    return null;
   }
 
 }
