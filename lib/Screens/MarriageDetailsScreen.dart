@@ -53,6 +53,39 @@ class _MarriageDetailsScreenState extends State<MarriageDetailsScreen> {
           child: Column(
             children: <Widget>[
               Container(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.red,
+                      child: ClipOval(
+                        child: SizedBox(
+                          width: 100.0,
+                          height: 100.0,
+                          child: Image(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://images.pexels.com/users/avatars/1149799/kelbia-taina-878.jpeg'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text('200'),
+                        Text('Likes'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
                   padding: EdgeInsets.only(top: 20.0),
                   child: Text(
                     "Portfolio",
