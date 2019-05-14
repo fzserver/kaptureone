@@ -11,7 +11,6 @@ class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
-final GoogleSignIn googleSignIn = new GoogleSignIn();
 
 
 class _LoginState extends State<Login> {
@@ -38,12 +37,10 @@ class _LoginState extends State<Login> {
   }
 
    validateGoogleSignIn() async{
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAccount googleSignInAccount = await GoogleSignIn().signIn();
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
     try {
-      String userId =
           await widget.auth.signInWithCredential(gSA.accessToken, gSA.idToken);
-      print("User Name: ${userId}");
       widget.onSignedIn();
     } catch (e) {
       print("error $e");
@@ -53,9 +50,7 @@ class _LoginState extends State<Login> {
   void validateAndSubmit() async {
     if (validateAndSave()) {
       try {
-        String userId =
             await widget.auth.signInWithEmailAndPassword(_email, _password);
-        print("Signed in ${userId}");
         widget.onSignedIn();
       } catch (e) {
         print("error $e");

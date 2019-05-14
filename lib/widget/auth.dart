@@ -11,7 +11,6 @@ abstract class BaseAuth {
 }
 
 class Auth implements BaseAuth {
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
 
   Future<String> createUserWithEmailAndPassword(String email, String password) async{
     FirebaseUser user = await FirebaseAuth.instance
@@ -29,8 +28,9 @@ class Auth implements BaseAuth {
       return user.uid;
   }
 
-  Future<void> signOut() async{
-      return FirebaseAuth.instance.signOut();
+  Future<void> signOut() async {
+          GoogleSignIn().signOut();
+      FirebaseAuth.instance.signOut();
   }
 
   Future<String> signInWithCredential(String accessToken, String  idToken) async{
