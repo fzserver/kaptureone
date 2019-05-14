@@ -7,39 +7,42 @@ abstract class BaseAuth {
   Future<String> createUserWithEmailAndPassword(String email, String password);
   Future<String> currentUser();
   Future<void> signOut();
-  Future<String> signInWithCredential(String accessToken, String idToken);
+  Future<String> signInWithCredential(String accessToken, String  idToken);
+  Future<String> signInWithFacebook(String accessToken);
 }
 
 class Auth implements BaseAuth {
-  Future<String> createUserWithEmailAndPassword(
-      String email, String password) async {
+
+  Future<String> createUserWithEmailAndPassword(String email, String password) async{
     FirebaseUser user = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
     return user.uid;
   }
 
-  Future<String> signInWithEmailAndPassword(
-      String email, String password) async {
+  Future<String> signInWithEmailAndPassword(String email, String password) async{
     FirebaseUser user = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
     return user.uid;
-  }
-
+}
   Future<String> currentUser() async {
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    return user.uid;
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      return user.uid;
   }
 
   Future<void> signOut() async {
-    GoogleSignIn().signOut();
-    FirebaseAuth.instance.signOut();
+          GoogleSignIn().signOut();
+      FirebaseAuth.instance.signOut();
   }
 
-  Future<String> signInWithCredential(
-      String accessToken, String idToken) async {
-    FirebaseUser user = await FirebaseAuth.instance.signInWithCredential(
-        GoogleAuthProvider.getCredential(
-            accessToken: accessToken, idToken: idToken));
+  Future<String> signInWithCredential(String accessToken, String  idToken) async{
+
+    FirebaseUser user = await FirebaseAuth.instance.signInWithCredential(GoogleAuthProvider.getCredential(accessToken: accessToken, idToken: idToken));
     return user.uid;
   }
+
+  Future<String> signInWithFacebook(String accessToken) async{
+    FirebaseUser user = await FirebaseAuth.instance.signInWithCredential(FacebookAuthProvider.getCredential(accessToken: accessToken));
+    return null;
+  }
+
 }
