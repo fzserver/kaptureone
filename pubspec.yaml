@@ -27,6 +27,9 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: fonts/Pacifico-Regular.ttf
+    - family: Helvetica
+      fonts:
+        - asset: fonts/HelveticaNeueLTStd-BdCn.otf
   uses-material-design: true
 
   assets:
