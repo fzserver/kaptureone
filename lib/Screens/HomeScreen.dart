@@ -3,33 +3,78 @@ import 'package:kaptureone/Screens/MarriageScreen.dart';
 import '../widget/CustomAppbar.dart';
 import '../widget/auth.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({this.auth, this.onSingedOut});
   final BaseAuth auth;
   final VoidCallback onSingedOut;
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   void _signOut() async {
     try {
-      await auth.signOut();
-      onSingedOut();
+      await widget.auth.signOut();
+      widget.onSingedOut();
     } catch (e) {
       print(e);
     }
   }
+
+  List<String> items = ['My Orders', 'Location', 'Profile', 'Notifications'];
+
+  List<Widget> drawerItems() => items != null
+      ? items
+          .map(
+            (ditems) => ListTile(
+                  title: Text(
+                    ditems,
+                  ),
+                ),
+          )
+          .toList()
+      : <Widget>[
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation(Colors.white),
+          )
+        ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 2.0),
-          child: Image(image: AssetImage("assets/images/logo.png")),
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(left: 2.0),
+        //   child: Image(image: AssetImage("assets/images/logo.png")),
+        // ),
+        // actions: <Widget>[
+        //   // CustomAppbar(),
+        //   FlatButton(onPressed: _signOut, child: Text("Logout")),
+        // ],
+      ),
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  fit: BoxFit.scaleDown,
+                ),
+                width: 120,
+                height: 120,
+              ),
+              Divider(
+                color: Colors.grey,
+              ),
+              Column(
+                children: drawerItems(),
+              ),
+            ],
+          ),
         ),
-        actions: <Widget>[
-          CustomAppbar(),
-          FlatButton(onPressed: _signOut, child: Text("Logout"))
-        ],
       ),
       body: Container(
         child: Column(
