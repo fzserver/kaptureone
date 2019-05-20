@@ -49,10 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
         //   padding: const EdgeInsets.only(left: 2.0),
         //   child: Image(image: AssetImage("assets/images/logo.png")),
         // ),
-        // actions: <Widget>[
-        //   // CustomAppbar(),
-        //   FlatButton(onPressed: _signOut, child: Text("Logout")),
-        // ],
+        actions: <Widget>[
+          // CustomAppbar(),
+          // FlatButton(onPressed: _signOut, child: Text("Logout")),
+          new IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: _signOut,
+          ),
+        ],
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       drawer: Drawer(
         child: SingleChildScrollView(
