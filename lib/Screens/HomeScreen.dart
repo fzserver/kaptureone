@@ -45,10 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        // leading: Padding(
-        //   padding: const EdgeInsets.only(left: 2.0),
-        //   child: Image(image: AssetImage("assets/images/logo.png")),
-        // ),
+        title: Image(image: AssetImage("assets/images/logo.png"), fit: BoxFit.scaleDown, height: 32,),
+        // centerTitle: true,
         actions: <Widget>[
           // CustomAppbar(),
           // FlatButton(onPressed: _signOut, child: Text("Logout")),
