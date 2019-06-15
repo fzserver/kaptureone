@@ -27,9 +27,10 @@ class _SignupState extends State<Signup> {
   void _validateAndSubmit() async {
     if (validateAndSave()) {
       try {
-        // String userId =
-        await widget.auth.createUserWithEmailAndPassword(_email, _password);
+        String userId =
+            await widget.auth.createUserWithEmailAndPassword(_email, _password);
         // print("Register ${userId}");
+        widget.auth.saveUserDetailsInFirestore(userId);
       } catch (e) {
         // print("error $e");
       }

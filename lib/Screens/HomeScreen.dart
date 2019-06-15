@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kaptureone/Screens/MarriageScreen.dart';
-import '../widget/CustomAppbar.dart';
 import '../widget/auth.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -56,28 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         iconTheme: IconThemeData(color: Colors.black),
-      ),
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  fit: BoxFit.scaleDown,
-                ),
-                width: 120,
-                height: 120,
-              ),
-              Divider(
-                color: Colors.grey,
-              ),
-              Column(
-                children: drawerItems(),
-              ),
-            ],
-          ),
-        ),
       ),
       body: Container(
         child: Column(
